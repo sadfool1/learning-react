@@ -24,9 +24,14 @@ const App = () => {
     },
   ];
 
+  const newExpenseDataEntry = expenseData => {
+    const myNewData = { ...expenseData };
+    console.log(myNewData);
+  };
+
   return (
     <div>
-      <NewExpense />
+      <NewExpense onSubmitForm={newExpenseDataEntry} />
       <DisplayingExpenses items={expenses} />
     </div>
   );
