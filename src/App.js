@@ -1,6 +1,6 @@
-import DisplayingExpenses from "./components/DisplayingExpenses";
+import DisplayingExpenses from "./components/Expenses/DisplayingExpenses";
 
-function App() {
+const App = () => {
   const expenses = [
     {
       id: "e1",
@@ -29,6 +29,6 @@ function App() {
       <DisplayingExpenses items={expenses} />
     </div>
   );
-}
+};
 
 export default App;

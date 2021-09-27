@@ -1,8 +1,8 @@
 import "./DisplayingExpenses.css";
 import ExpenseItem from "./ExpenseItem";
-import Card from "./Card";
+import Card from "../UI/Card";
 
-function Displayingitems(props) {
+const Displayingitems = props => {
   return (
     <Card className="expenses">
       <ExpenseItem
@@ -27,6 +27,6 @@ function Displayingitems(props) {
       />
     </Card>
   );
-}
+};
 
 export default Displayingitems;
