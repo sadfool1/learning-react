@@ -32,6 +32,8 @@ const App = () => {
       return [expense, ...prevExpenses];
     });
   };
+
+  console.log(expenses);
   return (
     <div>
       <NewExpense onAddExpense={addExpenseHandler} />
