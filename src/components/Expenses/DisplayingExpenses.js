@@ -10,6 +10,11 @@ const Displayingitems = props => {
     setFilteredYear(selectedYear);
   };
 
+  // filter returns a brand new array, it doesnt harm the previous array
+  const filteredExpenses = props.items.filter(expense => {
+    return expense.date.getFullYear().toString() === filteredYear;
+  });
+
   return (
     <div>
       <Card className="expenses">
@@ -17,7 +22,7 @@ const Displayingitems = props => {
           selected={filteredYear}
           onChangeFilter={userChoiceYear}
         />
-        {props.items.map(expense => (
+        {filteredExpenses.map(expense => (
           <ExpenseItem
             key={expense.id}
             title={expense.title}
