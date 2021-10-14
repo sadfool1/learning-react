@@ -25,7 +25,7 @@ const passwordReducer = (state, action) => {
   return { value: "", isValid: false };
 };
 
-const Login = (props) => {
+const Login = props => {
   const [formIsValid, setFormIsValid] = useState(false);
   const [emailState, dispatchEmail] = useReducer(emailReducer, {
     value: "",
@@ -36,12 +36,15 @@ const Login = (props) => {
     isValid: false,
   });
 
-  const emailChangeHandler = (event) => {
+  // the third parameter of the usereducer can programitally craete an initial state
+  // for example, if the initial condition is more complex
+
+  const emailChangeHandler = event => {
     dispatchEmail({ type: "USER_INPUT", val: event.target.value }); // extra payload val
     // setFormIsValid(emailState.isValid && passwordState.isValid);
   };
 
-  const passwordChangeHandler = (event) => {
+  const passwordChangeHandler = event => {
     dispatchPassword({ type: "USER_INPUT", val: event.target.value });
     setFormIsValid(emailState.isValid && passwordState.isValid);
   };
@@ -54,7 +57,7 @@ const Login = (props) => {
     dispatchPassword({ type: "INPUT_BLUR" });
   };
 
-  const submitHandler = (event) => {
+  const submitHandler = event => {
     event.preventDefault();
     props.onLogin(emailState.value, passwordState.value);
   };
