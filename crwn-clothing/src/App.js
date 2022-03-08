@@ -6,9 +6,9 @@ import { Switch, Route } from 'react-router-dom';
 
 const HatsPage = () => {
 
-  <div className="">
+  return (<div className="">
     <h1 className=""> HATSPAGE </h1>
-  </div>
+  </div>)
 }
 
 function App() {
@@ -16,7 +16,7 @@ function App() {
     <div className="">
       <Switch>
         <Route exact path="/" component={HomePage} />
-        <Route path="/hats" component={HatsPage} />
+        <Route path="/shop/hats" component={HatsPage} />
       </Switch>
 
      </div>
