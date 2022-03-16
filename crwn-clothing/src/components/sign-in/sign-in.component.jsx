@@ -3,6 +3,7 @@ import "./sign-in.styles.scss"
 import FormInput from "../form-input/form-input.component"
 import CustomButton from "../custom-button/custom-button.component"
 import { signInWithGoogle } from "../../firebase/firebase.utils"
+import SignUp from "../sign-up/sign-up.component"
 
 class SignIn extends React.Component {
 
@@ -54,7 +55,7 @@ class SignIn extends React.Component {
           </div>
 
         </form>
-
+        <SignUp />
        </div>
     )
   }
