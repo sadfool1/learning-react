@@ -7,18 +7,19 @@ import DisplayBalances from "./components/DisplayBalances"
 import {useState, useEffect} from 'react'
 import EntryLines from "./components/EntryLines"
 import ModalEdit from "./components/ModalEdit"
+import {useSelector} from 'react-redux'
 
 function App() {
-
-  const [entries, setEntries] = useState(initialEntries)
   const [description, setDescription] = useState('')
   const [value, setValue] = useState('')
   const [isExpense, setIsExpense] = useState(true)
+
   const [isOpen, setIsOpen] = useState(false)
   const [entryId, setentryId] = useState();
   const [incomeTotal, setIncomeTotal] = useState(0)
   const [expenseTotal, setExpenseTotal] = useState(0)
   const [total, setTotal] = useState(0)
+  const entries = useSelector( (state) => state.entries)
 
   useEffect(() => {
     if (!isOpen && entryId) {
@@ -27,7 +28,7 @@ function App() {
       newEntries[index].description = description;
       newEntries[index].value = value;
       newEntries[index].isExpense = isExpense;
-      setEntries(newEntries);
+      // setEntries(newEntries);
       resetEntry();
     }
 
@@ -53,6 +54,9 @@ function App() {
 
   }, [entries])
 
+
+
+
   const editEntry = (id) => {
     console.log(`edit entry with id: ${id}`);
     if (id) {
@@ -75,14 +79,9 @@ function App() {
   }
 
 
-  const deleteEntry = (id) => {
-    const result = entries.filter((entry) => entry.id !== id);
-    setEntries(result)
-  }
-
   const addEntry = () => {
     const result = entries.concat({id: entries.length+1, description, value, isExpense})
-    setEntries(result)
+    // setEntries(result)
     resetEntry()
 
   }
@@ -97,7 +96,7 @@ function App() {
 
       <MainHeader title="History" type="h3" />
 
-      <EntryLines entries={entries} deleteEntry={deleteEntry} setIsOpen={setIsOpen} editEntry={editEntry} />
+      <EntryLines entries={entries} setIsOpen={setIsOpen} editEntry={editEntry} />
 
 
   <MainHeader title="Add new Transaction" type="h3" />
@@ -131,35 +130,3 @@ function App() {
 }
 
 export default App;
-
-var initialEntries = [
-
-  {
-    id: 1,
-    description:"Work Income",
-    value:1000.00,
-    isExpense:false
-
-  },
-  {
-    id: 2,
-    description:"Bill",
-    value:200.00,
-    isExpense:true
-
-  },
-  {
-    id: 3,
-    description:"Rent",
-    value:30.00,
-    isExpense:true
-
-  },
-  {
-    id: 4,
-    description:"Power bill",
-    value:50.00,
-    isExpense:true
-
-  }
-]
