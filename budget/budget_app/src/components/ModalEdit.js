@@ -1,8 +1,13 @@
 import React from "react";
 import {Modal, Button} from "semantic-ui-react"
 import EntryFormA from "./NewEntryForm"
+import {closeEditModal} from "../actions/modals.actions"
+import {useDispatch} from "react-redux"
+
 
 const ModelEdit = ({isOpen, setIsOpen, ...otherProps}) => {
+
+  const dispatch = useDispatch()
 
   return (
     <Modal open={isOpen}>
@@ -19,7 +24,7 @@ const ModelEdit = ({isOpen, setIsOpen, ...otherProps}) => {
       </Modal.Content>
 
       <Modal.Actions>
-        <Button onClick={()=> setIsOpen(false)}>Close</Button>
+        <Button onClick={()=> dispatch(closeEditModal())}>Close</Button>
         <Button onClick={()=> setIsOpen(false)} primary>Ok</Button>
 
       </Modal.Actions>
